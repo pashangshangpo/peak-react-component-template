@@ -1,4 +1,6 @@
-.iec-svg {
+@import '../../style/var.scss';
+
+.#{$prefix}-svg {
   width: 1em;
   height: 1em;
   vertical-align: -0.15em;

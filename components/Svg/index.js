@@ -6,8 +6,7 @@
 
 import React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
-import { El } from '$common'
+import { El, C } from '$common'
 
 import './index.scss'
 
@@ -42,7 +41,7 @@ export default class Svg extends React.Component {
       'svg',
       {
         'aria-hidden': true,
-        className: classnames('iec-svg', this.props.className),
+        className: C('svg', this.props.className),
         viewBox: icon.viewBox
       },
       El(
