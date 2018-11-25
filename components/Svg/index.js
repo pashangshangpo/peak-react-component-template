@@ -11,23 +11,32 @@ import { El } from '$common'
 
 import './index.scss'
 
+const ImportAll = r => {
+  let result = {}
+
+  r.keys().forEach(path => {
+    let value = r(path).default
+
+    result[value.id] = value
+  })
+
+  return result
+}
+
+const Icon = ImportAll(require.context('$svg', true, /\.svg$/))
+
 export default class Svg extends React.Component {
   static propTypes = {
     className: PropTypes.string,
-    icon: PropTypes.object
+    name: PropTypes.string
   }
 
   static defaultProps = {
-    className: '',
-    icon: {}
+    className: ''
   }
 
   render() {
-    let icon = this.props.icon
-
-    if (!icon.viewBox && icon.default) {
-      icon = icon.default
-    }
+    let icon = Icon[this.props.name]
 
     return El(
       'svg',
